@@ -1,10 +1,10 @@
 {% style %}
   .hero-section-wrapper {
-    background-image: url('{% if section.settings.image != blank %}{{ section.settings.image | image_url: width: 800 }}{% else %}{{ "hero-bg.png" | asset_url }}{% endif %}');
+    background-image: url('{% if section.settings.image != blank %}{{ section.settings.image | image_url: width: 800 }}{% else %}{{ "hero-bg.png" | asset_img_url: "800x" }}{% endif %}');
   }
   @media (min-width: 768px) {
     .hero-section-wrapper {
-      background-image: url('{% if section.settings.image != blank %}{{ section.settings.image | image_url: width: 1800 }}{% else %}{{ "hero-bg.png" | asset_url }}{% endif %}');
+      background-image: url('{% if section.settings.image != blank %}{{ section.settings.image | image_url: width: 1800 }}{% else %}{{ "hero-bg.png" | asset_img_url: "1800x" }}{% endif %}');
     }
   }
 {% endstyle %}

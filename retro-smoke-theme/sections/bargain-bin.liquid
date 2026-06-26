@@ -24,7 +24,7 @@
               <div class="bargain-image-wrapper">
                 <a href="{{ product.url }}">
                   {% if product.featured_image != blank %}
-                    <img src="{{ product.featured_image | image_url: width: 500, height: 500, crop: 'center' }}" 
+                    <img src="{{ product.featured_image | image_url: width: 360, height: 360, crop: 'center' }}" 
                          alt="{{ product.title | escape }}" 
                          class="bargain-card-img"
                          width="250"

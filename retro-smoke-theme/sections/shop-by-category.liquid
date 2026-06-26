@@ -14,7 +14,7 @@
           {% if section.settings.image_1 != blank %}
             <img src="{{ section.settings.image_1 | image_url: width: 400, height: 320, crop: 'center' }}" alt="Vaporizers" class="category-card-img" width="300" height="240" loading="lazy">
           {% else %}
-            <img src="{{ 'vape-category.png' | asset_url }}" alt="Vaporizers" class="category-card-img" width="300" height="240" loading="lazy">
+            <img src="{{ 'vape-category.png' | asset_img_url: '400x320', crop: 'center' }}" alt="Vaporizers" class="category-card-img" width="300" height="240" loading="lazy">
           {% endif %}
         </div>
       </a>
@@ -47,7 +47,7 @@
           {% if section.settings.image_2 != blank %}
             <img src="{{ section.settings.image_2 | image_url: width: 400, height: 320, crop: 'center' }}" alt="Glass Pieces" class="category-card-img" width="300" height="240" loading="lazy">
           {% else %}
-            <img src="{{ 'glass-category.png' | asset_url }}" alt="Glass Pieces" class="category-card-img" width="300" height="240" loading="lazy">
+            <img src="{{ 'glass-category.png' | asset_img_url: '400x320', crop: 'center' }}" alt="Glass Pieces" class="category-card-img" width="300" height="240" loading="lazy">
           {% endif %}
         </div>
       </a>
@@ -80,7 +80,7 @@
           {% if section.settings.image_3 != blank %}
             <img src="{{ section.settings.image_3 | image_url: width: 400, height: 320, crop: 'center' }}" alt="Batteries & Mods" class="category-card-img" width="300" height="240" loading="lazy">
           {% else %}
-            <img src="{{ 'pods-category.png' | asset_url }}" alt="Batteries & Mods" class="category-card-img" width="300" height="240" loading="lazy">
+            <img src="{{ 'pods-category.png' | asset_img_url: '400x320', crop: 'center' }}" alt="Batteries & Mods" class="category-card-img" width="300" height="240" loading="lazy">
           {% endif %}
         </div>
       </a>
@@ -113,7 +113,7 @@
           {% if section.settings.image_4 != blank %}
             <img src="{{ section.settings.image_4 | image_url: width: 400, height: 320, crop: 'center' }}" alt="Accessories" class="category-card-img" width="300" height="240" loading="lazy">
           {% else %}
-            <img src="{{ 'accessories-category.png' | asset_url }}" alt="Accessories" class="category-card-img" width="300" height="240" loading="lazy">
+            <img src="{{ 'accessories-category.png' | asset_img_url: '400x320', crop: 'center' }}" alt="Accessories" class="category-card-img" width="300" height="240" loading="lazy">
           {% endif %}
         </div>
       </a>
@@ -146,7 +146,7 @@
           {% if section.settings.image_5 != blank %}
             <img src="{{ section.settings.image_5 | image_url: width: 400, height: 320, crop: 'center' }}" alt="Cleaning" class="category-card-img" width="300" height="240" loading="lazy">
           {% else %}
-            <img src="{{ 'cleaning-category.png' | asset_url }}" alt="Cleaning" class="category-card-img" width="300" height="240" loading="lazy">
+            <img src="{{ 'cleaning-category.png' | asset_img_url: '400x320', crop: 'center' }}" alt="Cleaning" class="category-card-img" width="300" height="240" loading="lazy">
           {% endif %}
         </div>
       </a>
