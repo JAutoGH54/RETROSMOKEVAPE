@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
-
 /** Critical CSS for the theme. This file is included on every page. */
 
 html {
@@ -31,6 +29,29 @@ body {
   -moz-osx-font-smoothing: grayscale;
   position: relative;
   overflow-x: hidden;
+}
+
+/* Age Gate Overlay Core Layout (Render immediately on first paint) */
+.age-gate-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0b0b0c;
+  background-image: radial-gradient(circle at center, #1b1b1e 0%, #050506 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+  padding: var(--page-margin);
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+/* Instant concealment for verified users */
+.age-verified .age-gate-overlay {
+  display: none !important;
 }
 
 /* Ambient animated vapor glows */

@@ -1,6 +1,20 @@
 <!doctype html>
 <html lang="{{ request.locale.iso_code }}">
   <head>
+    <script>
+      (function() {
+        if (localStorage.getItem('age_verified') === 'true') {
+          document.documentElement.classList.add('age-verified');
+        } else {
+          document.documentElement.setAttribute('data-drawer-open', 'true');
+        }
+      })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     {% # Inlined CSS Variables %}
     {% render 'css-variables' %}
 

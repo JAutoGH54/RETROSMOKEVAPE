@@ -22,9 +22,11 @@ function initAgeGate() {
   if (isVerified) {
     ageGate.style.display = 'none';
     document.documentElement.removeAttribute('data-drawer-open');
+    document.documentElement.classList.add('age-verified');
   } else {
     ageGate.style.display = 'flex';
     document.documentElement.setAttribute('data-drawer-open', 'true');
+    document.documentElement.classList.remove('age-verified');
   }
 
   const enterBtn = document.getElementById('age-gate-enter');
@@ -41,6 +43,7 @@ function initAgeGate() {
       document.documentElement.removeAttribute('data-drawer-open');
       setTimeout(() => {
         ageGate.style.display = 'none';
+        document.documentElement.classList.add('age-verified');
       }, 500);
     });
   }
