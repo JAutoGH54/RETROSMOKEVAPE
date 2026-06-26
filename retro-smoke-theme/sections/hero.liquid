@@ -1,5 +1,15 @@
-<div class="hero-section-wrapper" 
-     style="background-image: url('{% if section.settings.image != blank %}{{ section.settings.image | image_url: width: 1800 }}{% else %}{{ 'hero-bg.png' | asset_url }}{% endif %}');">
+{% style %}
+  .hero-section-wrapper {
+    background-image: url('{% if section.settings.image != blank %}{{ section.settings.image | image_url: width: 800 }}{% else %}{{ "hero-bg.png" | asset_url }}{% endif %}');
+  }
+  @media (min-width: 768px) {
+    .hero-section-wrapper {
+      background-image: url('{% if section.settings.image != blank %}{{ section.settings.image | image_url: width: 1800 }}{% else %}{{ "hero-bg.png" | asset_url }}{% endif %}');
+    }
+  }
+{% endstyle %}
+
+<div class="hero-section-wrapper">
   
   <div class="hero-overlay" style="background-color: rgba(15, 15, 16, {{ section.settings.overlay_opacity | default: 50 | divided_by: 100.0 }});"></div>
 

@@ -306,8 +306,14 @@ function initAjaxAddToCart() {
    6. Intersection Observer Scroll Reveal
    ========================================== */
 function initScrollAnimations() {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const elements = document.querySelectorAll('.reveal-on-scroll');
   if (elements.length === 0) return;
+
+  if (prefersReducedMotion) {
+    elements.forEach(el => el.classList.add('revealed'));
+    return;
+  }
 
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
@@ -331,6 +337,10 @@ function initCardInteractions() {
   const supportsHover = window.matchMedia('(hover: hover)').matches;
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isTouch = window.matchMedia('(pointer: coarse)').matches;
+
+  // Disable on mobile/touch screens or reduced motion to prevent scrolling reflows
+  if (!supportsHover || isTouch || prefersReducedMotion) return;
+
   const cardSelector = '.product-card, .category-card, .bargain-card';
 
   document.body.addEventListener('mousemove', function(e) {
@@ -389,6 +399,12 @@ function initCardInteractions() {
 function initVaporDrift() {
   const canvas = document.getElementById('hero-vapor-canvas');
   if (!canvas) return;
+
+  // Disable on mobile/tablet or when prefers-reduced-motion is active
+  if (window.innerWidth < 992 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    canvas.style.display = 'none';
+    return;
+  }
 
   const wrapper = canvas.parentElement;
   const ctx = canvas.getContext('2d');
