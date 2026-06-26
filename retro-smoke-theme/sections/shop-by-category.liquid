@@ -1,0 +1,674 @@
+<div class="shop-categories-section section-spacing" id="shop-by-category">
+  <div class="section-header reveal-on-scroll">
+    <h2>Shop By Category</h2>
+    <p>{{ section.settings.subheading | default: "Explore our curated ranges of hardware, glass art, and vapor gear." }}</p>
+  </div>
+
+  <div class="categories-grid">
+    
+    <!-- Category 1 -->
+    {%- assign link_1 = section.settings.link_1 | default: '/collections/vaporizers' -%}
+    <div class="category-card glass-panel reveal-on-scroll">
+      <a href="{{ link_1 }}" class="category-card-image-link" aria-label="Vaporizers">
+        <div class="category-card-image-box">
+          {% if section.settings.image_1 != blank %}
+            <img src="{{ section.settings.image_1 | image_url: width: 400, height: 320, crop: 'center' }}" alt="Vaporizers" class="category-card-img" width="300" height="240" loading="lazy">
+          {% else %}
+            <img src="{{ 'vape-category.png' | asset_url }}" alt="Vaporizers" class="category-card-img" width="300" height="240" loading="lazy">
+          {% endif %}
+        </div>
+      </a>
+      <div class="category-card-info">
+        <a href="{{ link_1 }}" class="category-card-title-link">
+          <span class="category-card-title">{{ section.settings.title_1 | default: "Vaporizers" }}</span>
+        </a>
+        
+        {% if section.settings.sub_title_1_a != blank or section.settings.sub_title_1_b != blank or section.settings.sub_title_1_c != blank %}
+          <div class="category-sub-pills">
+            {% if section.settings.sub_title_1_a != blank %}
+              <a href="{{ section.settings.sub_link_1_a | default: '#' }}" class="sub-pill">{{ section.settings.sub_title_1_a }}</a>
+            {% endif %}
+            {% if section.settings.sub_title_1_b != blank %}
+              <a href="{{ section.settings.sub_link_1_b | default: '#' }}" class="sub-pill">{{ section.settings.sub_title_1_b }}</a>
+            {% endif %}
+            {% if section.settings.sub_title_1_c != blank %}
+              <a href="{{ section.settings.sub_link_1_c | default: '#' }}" class="sub-pill">{{ section.settings.sub_title_1_c }}</a>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Category 2 -->
+    {%- assign link_2 = section.settings.link_2 | default: '/collections/water-pipes' -%}
+    <div class="category-card glass-panel reveal-on-scroll delay-100">
+      <a href="{{ link_2 }}" class="category-card-image-link" aria-label="Glass Pieces">
+        <div class="category-card-image-box">
+          {% if section.settings.image_2 != blank %}
+            <img src="{{ section.settings.image_2 | image_url: width: 400, height: 320, crop: 'center' }}" alt="Glass Pieces" class="category-card-img" width="300" height="240" loading="lazy">
+          {% else %}
+            <img src="{{ 'glass-category.png' | asset_url }}" alt="Glass Pieces" class="category-card-img" width="300" height="240" loading="lazy">
+          {% endif %}
+        </div>
+      </a>
+      <div class="category-card-info">
+        <a href="{{ link_2 }}" class="category-card-title-link">
+          <span class="category-card-title">{{ section.settings.title_2 | default: "Glass Pieces" }}</span>
+        </a>
+        
+        {% if section.settings.sub_title_2_a != blank or section.settings.sub_title_2_b != blank or section.settings.sub_title_2_c != blank %}
+          <div class="category-sub-pills">
+            {% if section.settings.sub_title_2_a != blank %}
+              <a href="{{ section.settings.sub_link_2_a | default: '#' }}" class="sub-pill">{{ section.settings.sub_title_2_a }}</a>
+            {% endif %}
+            {% if section.settings.sub_title_2_b != blank %}
+              <a href="{{ section.settings.sub_link_2_b | default: '#' }}" class="sub-pill">{{ section.settings.sub_title_2_b }}</a>
+            {% endif %}
+            {% if section.settings.sub_title_2_c != blank %}
+              <a href="{{ section.settings.sub_link_2_c | default: '#' }}" class="sub-pill">{{ section.settings.sub_title_2_c }}</a>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Category 3 -->
+    {%- assign link_3 = section.settings.link_3 | default: '/collections/510-batteries' -%}
+    <div class="category-card glass-panel reveal-on-scroll delay-200">
+      <a href="{{ link_3 }}" class="category-card-image-link" aria-label="Batteries & Mods">
+        <div class="category-card-image-box">
+          {% if section.settings.image_3 != blank %}
+            <img src="{{ section.settings.image_3 | image_url: width: 400, height: 320, crop: 'center' }}" alt="Batteries & Mods" class="category-card-img" width="300" height="240" loading="lazy">
+          {% else %}
+            <img src="{{ 'pods-category.png' | asset_url }}" alt="Batteries & Mods" class="category-card-img" width="300" height="240" loading="lazy">
+          {% endif %}
+        </div>
+      </a>
+      <div class="category-card-info">
+        <a href="{{ link_3 }}" class="category-card-title-link">
+          <span class="category-card-title">{{ section.settings.title_3 | default: "Batteries & Mods" }}</span>
+        </a>
+        
+        {% if section.settings.sub_title_3_a != blank or section.settings.sub_title_3_b != blank or section.settings.sub_title_3_c != blank %}
+          <div class="category-sub-pills">
+            {% if section.settings.sub_title_3_a != blank %}
+              <a href="{{ section.settings.sub_link_3_a | default: '#' }}" class="sub-pill">{{ section.settings.sub_title_3_a }}</a>
+            {% endif %}
+            {% if section.settings.sub_title_3_b != blank %}
+              <a href="{{ section.settings.sub_link_3_b | default: '#' }}" class="sub-pill">{{ section.settings.sub_title_3_b }}</a>
+            {% endif %}
+            {% if section.settings.sub_title_3_c != blank %}
+              <a href="{{ section.settings.sub_link_3_c | default: '#' }}" class="sub-pill">{{ section.settings.sub_title_3_c }}</a>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Category 4 -->
+    {%- assign link_4 = section.settings.link_4 | default: '/collections/accessories' -%}
+    <div class="category-card glass-panel reveal-on-scroll delay-300">
+      <a href="{{ link_4 }}" class="category-card-image-link" aria-label="Accessories">
+        <div class="category-card-image-box">
+          {% if section.settings.image_4 != blank %}
+            <img src="{{ section.settings.image_4 | image_url: width: 400, height: 320, crop: 'center' }}" alt="Accessories" class="category-card-img" width="300" height="240" loading="lazy">
+          {% else %}
+            <img src="{{ 'accessories-category.png' | asset_url }}" alt="Accessories" class="category-card-img" width="300" height="240" loading="lazy">
+          {% endif %}
+        </div>
+      </a>
+      <div class="category-card-info">
+        <a href="{{ link_4 }}" class="category-card-title-link">
+          <span class="category-card-title">{{ section.settings.title_4 | default: "Accessories" }}</span>
+        </a>
+        
+        {% if section.settings.sub_title_4_a != blank or section.settings.sub_title_4_b != blank or section.settings.sub_title_4_c != blank %}
+          <div class="category-sub-pills">
+            {% if section.settings.sub_title_4_a != blank %}
+              <a href="{{ section.settings.sub_link_4_a | default: '#' }}" class="sub-pill">{{ section.settings.sub_title_4_a }}</a>
+            {% endif %}
+            {% if section.settings.sub_title_4_b != blank %}
+              <a href="{{ section.settings.sub_link_4_b | default: '#' }}" class="sub-pill">{{ section.settings.sub_title_4_b }}</a>
+            {% endif %}
+            {% if section.settings.sub_title_4_c != blank %}
+              <a href="{{ section.settings.sub_link_4_c | default: '#' }}" class="sub-pill">{{ section.settings.sub_title_4_c }}</a>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Category 5 -->
+    {%- assign link_5 = section.settings.link_5 | default: '/collections/cleaners' -%}
+    <div class="category-card glass-panel reveal-on-scroll delay-400">
+      <a href="{{ link_5 }}" class="category-card-image-link" aria-label="Cleaning">
+        <div class="category-card-image-box">
+          {% if section.settings.image_5 != blank %}
+            <img src="{{ section.settings.image_5 | image_url: width: 400, height: 320, crop: 'center' }}" alt="Cleaning" class="category-card-img" width="300" height="240" loading="lazy">
+          {% else %}
+            <img src="{{ 'cleaning-category.png' | asset_url }}" alt="Cleaning" class="category-card-img" width="300" height="240" loading="lazy">
+          {% endif %}
+        </div>
+      </a>
+      <div class="category-card-info">
+        <a href="{{ link_5 }}" class="category-card-title-link">
+          <span class="category-card-title">{{ section.settings.title_5 | default: "Cleaning" }}</span>
+        </a>
+        
+        {% if section.settings.sub_title_5_a != blank or section.settings.sub_title_5_b != blank or section.settings.sub_title_5_c != blank %}
+          <div class="category-sub-pills">
+            {% if section.settings.sub_title_5_a != blank %}
+              <a href="{{ section.settings.sub_link_5_a | default: '#' }}" class="sub-pill">{{ section.settings.sub_title_5_a }}</a>
+            {% endif %}
+            {% if section.settings.sub_title_5_b != blank %}
+              <a href="{{ section.settings.sub_link_5_b | default: '#' }}" class="sub-pill">{{ section.settings.sub_title_5_b }}</a>
+            {% endif %}
+            {% if section.settings.sub_title_5_c != blank %}
+              <a href="{{ section.settings.sub_link_5_c | default: '#' }}" class="sub-pill">{{ section.settings.sub_title_5_c }}</a>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Category 6 -->
+    {%- assign link_6 = section.settings.link_6 | default: '/collections/hookas' -%}
+    <div class="category-card glass-panel reveal-on-scroll delay-500">
+      <a href="{{ link_6 }}" class="category-card-image-link" aria-label="Hookahs">
+        <div class="category-card-image-box">
+          {% if section.settings.image_6 != blank %}
+            <img src="{{ section.settings.image_6 | image_url: width: 400, height: 320, crop: 'center' }}" alt="Hookahs" class="category-card-img" width="300" height="240" loading="lazy">
+          {% else %}
+            <!-- Uses background placeholder style since we have 5 stock pngs -->
+            <div class="category-card-img" style="background-image: linear-gradient(135deg, #1c1c1e 0%, #151516 100%); display:flex; align-items:center; justify-content:center; width:100%; height:100%; position:absolute;">
+              <span style="font-size: 2.2rem;">💨</span>
+            </div>
+          {% endif %}
+        </div>
+      </a>
+      <div class="category-card-info">
+        <a href="{{ link_6 }}" class="category-card-title-link">
+          <span class="category-card-title">{{ section.settings.title_6 | default: "Hookahs" }}</span>
+        </a>
+        
+        {% if section.settings.sub_title_6_a != blank or section.settings.sub_title_6_b != blank or section.settings.sub_title_6_c != blank %}
+          <div class="category-sub-pills">
+            {% if section.settings.sub_title_6_a != blank %}
+              <a href="{{ section.settings.sub_link_6_a | default: '#' }}" class="sub-pill">{{ section.settings.sub_title_6_a }}</a>
+            {% endif %}
+            {% if section.settings.sub_title_6_b != blank %}
+              <a href="{{ section.settings.sub_link_6_b | default: '#' }}" class="sub-pill">{{ section.settings.sub_title_6_b }}</a>
+            {% endif %}
+            {% if section.settings.sub_title_6_c != blank %}
+              <a href="{{ section.settings.sub_link_6_c | default: '#' }}" class="sub-pill">{{ section.settings.sub_title_6_c }}</a>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% stylesheet %}
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+    max-width: var(--page-width);
+    margin: 0 auto;
+  }
+
+  @media (min-width: 768px) {
+    .categories-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (min-width: 992px) {
+    .categories-grid {
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1rem;
+    }
+  }
+
+  .category-card {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .category-card-image-link {
+    display: block;
+    width: 100%;
+  }
+
+  .category-card-image-box {
+    position: relative;
+    width: 100%;
+    padding-top: 80%; /* Sleek wide aspect ratio (less tall) */
+    overflow: hidden;
+    background-color: #0b0b0c;
+    border-bottom: 1.5px solid rgba(230, 209, 172, 0.05);
+  }
+
+  .category-card-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .category-card-info {
+    padding: 0.85rem 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background-color: rgba(28, 28, 30, 0.25);
+    flex-grow: 1;
+  }
+
+  .category-card-title-link {
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .category-card-title {
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: var(--color-brand-cream);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    transition: color 0.2s;
+  }
+
+  .category-card-title-link:hover .category-card-title {
+    color: var(--color-brand-coral);
+  }
+
+  /* Subcategory micro-pills */
+  .category-sub-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 0.25rem;
+  }
+
+  .sub-pill {
+    font-size: 0.68rem;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #b3b0a8;
+    background-color: rgba(230, 209, 172, 0.05);
+    border: 1px solid rgba(230, 209, 172, 0.12);
+    padding: 0.35rem 0.65rem;
+    border-radius: 16px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: inline-block;
+  }
+
+  .sub-pill:hover {
+    color: var(--color-brand-charcoal);
+    background-color: var(--color-brand-green);
+    border-color: var(--color-brand-green);
+    box-shadow: 0 0 8px rgba(36, 168, 104, 0.4);
+  }
+
+  /* Hover states */
+  .category-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-brand-coral);
+    box-shadow: 0 10px 25px rgba(226, 108, 62, 0.12);
+  }
+
+  .category-card:hover .category-card-img {
+    transform: scale(1.06);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Categories Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading Text",
+      "default": "Explore our curated ranges of hardware, glass art, and vapor gear."
+    },
+    {
+      "type": "header",
+      "content": "Category 1"
+    },
+    {
+      "type": "text",
+      "id": "title_1",
+      "label": "Card Title",
+      "default": "Vaporizers"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Card Image"
+    },
+    {
+      "type": "url",
+      "id": "link_1",
+      "label": "Collection Link"
+    },
+    {
+      "type": "text",
+      "id": "sub_title_1_a",
+      "label": "Subcategory A: Label",
+      "default": "Dry Herb"
+    },
+    {
+      "type": "url",
+      "id": "sub_link_1_a",
+      "label": "Subcategory A: Link"
+    },
+    {
+      "type": "text",
+      "id": "sub_title_1_b",
+      "label": "Subcategory B: Label",
+      "default": "Wax Mod"
+    },
+    {
+      "type": "url",
+      "id": "sub_link_1_b",
+      "label": "Subcategory B: Link"
+    },
+    {
+      "type": "text",
+      "id": "sub_title_1_c",
+      "label": "Subcategory C: Label",
+      "default": "Coils"
+    },
+    {
+      "type": "url",
+      "id": "sub_link_1_c",
+      "label": "Subcategory C: Link"
+    },
+    {
+      "type": "header",
+      "content": "Category 2"
+    },
+    {
+      "type": "text",
+      "id": "title_2",
+      "label": "Card Title",
+      "default": "Glass Pieces"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Card Image"
+    },
+    {
+      "type": "url",
+      "id": "link_2",
+      "label": "Collection Link"
+    },
+    {
+      "type": "text",
+      "id": "sub_title_2_a",
+      "label": "Subcategory A: Label",
+      "default": "Bongs"
+    },
+    {
+      "type": "url",
+      "id": "sub_link_2_a",
+      "label": "Subcategory A: Link"
+    },
+    {
+      "type": "text",
+      "id": "sub_title_2_b",
+      "label": "Subcategory B: Label",
+      "default": "Dab Rigs"
+    },
+    {
+      "type": "url",
+      "id": "sub_link_2_b",
+      "label": "Subcategory B: Link"
+    },
+    {
+      "type": "text",
+      "id": "sub_title_2_c",
+      "label": "Subcategory C: Label",
+      "default": "Bubblers"
+    },
+    {
+      "type": "url",
+      "id": "sub_link_2_c",
+      "label": "Subcategory C: Link"
+    },
+    {
+      "type": "header",
+      "content": "Category 3"
+    },
+    {
+      "type": "text",
+      "id": "title_3",
+      "label": "Card Title",
+      "default": "Batteries & Mods"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Card Image"
+    },
+    {
+      "type": "url",
+      "id": "link_3",
+      "label": "Collection Link"
+    },
+    {
+      "type": "text",
+      "id": "sub_title_3_a",
+      "label": "Subcategory A: Label",
+      "default": "510 Thread"
+    },
+    {
+      "type": "url",
+      "id": "sub_link_3_a",
+      "label": "Subcategory A: Link"
+    },
+    {
+      "type": "text",
+      "id": "sub_title_3_b",
+      "label": "Subcategory B: Label",
+      "default": "Pods"
+    },
+    {
+      "type": "url",
+      "id": "sub_link_3_b",
+      "label": "Subcategory B: Link"
+    },
+    {
+      "type": "text",
+      "id": "sub_title_3_c",
+      "label": "Subcategory C: Label",
+      "default": "Chargers"
+    },
+    {
+      "type": "url",
+      "id": "sub_link_3_c",
+      "label": "Subcategory C: Link"
+    },
+    {
+      "type": "header",
+      "content": "Category 4"
+    },
+    {
+      "type": "text",
+      "id": "title_4",
+      "label": "Card Title",
+      "default": "Accessories"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_4",
+      "label": "Card Image"
+    },
+    {
+      "type": "url",
+      "id": "link_4",
+      "label": "Collection Link"
+    },
+    {
+      "type": "text",
+      "id": "sub_title_4_a",
+      "label": "Subcategory A: Label",
+      "default": "Trays"
+    },
+    {
+      "type": "url",
+      "id": "sub_link_4_a",
+      "label": "Subcategory A: Link"
+    },
+    {
+      "type": "text",
+      "id": "sub_title_4_b",
+      "label": "Subcategory B: Label",
+      "default": "Grinders"
+    },
+    {
+      "type": "url",
+      "id": "sub_link_4_b",
+      "label": "Subcategory B: Link"
+    },
+    {
+      "type": "text",
+      "id": "sub_title_4_c",
+      "label": "Subcategory C: Label",
+      "default": "Lighters"
+    },
+    {
+      "type": "url",
+      "id": "sub_link_4_c",
+      "label": "Subcategory C: Link"
+    },
+    {
+      "type": "header",
+      "content": "Category 5"
+    },
+    {
+      "type": "text",
+      "id": "title_5",
+      "label": "Card Title",
+      "default": "Cleaning"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_5",
+      "label": "Card Image"
+    },
+    {
+      "type": "url",
+      "id": "link_5",
+      "label": "Collection Link"
+    },
+    {
+      "type": "text",
+      "id": "sub_title_5_a",
+      "label": "Subcategory A: Label",
+      "default": "Cleaners"
+    },
+    {
+      "type": "url",
+      "id": "sub_link_5_a",
+      "label": "Subcategory A: Link"
+    },
+    {
+      "type": "text",
+      "id": "sub_title_5_b",
+      "label": "Subcategory B: Label",
+      "default": "Brushes"
+    },
+    {
+      "type": "url",
+      "id": "sub_link_5_b",
+      "label": "Subcategory B: Link"
+    },
+    {
+      "type": "text",
+      "id": "sub_title_5_c",
+      "label": "Subcategory C: Label",
+      "default": "Kits"
+    },
+    {
+      "type": "url",
+      "id": "sub_link_5_c",
+      "label": "Subcategory C: Link"
+    },
+    {
+      "type": "header",
+      "content": "Category 6"
+    },
+    {
+      "type": "text",
+      "id": "title_6",
+      "label": "Card Title",
+      "default": "Hookahs"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_6",
+      "label": "Card Image"
+    },
+    {
+      "type": "url",
+      "id": "link_6",
+      "label": "Collection Link"
+    },
+    {
+      "type": "text",
+      "id": "sub_title_6_a",
+      "label": "Subcategory A: Label",
+      "default": "Hookahs"
+    },
+    {
+      "type": "url",
+      "id": "sub_link_6_a",
+      "label": "Subcategory A: Link"
+    },
+    {
+      "type": "text",
+      "id": "sub_title_6_b",
+      "label": "Subcategory B: Label",
+      "default": "Coals"
+    },
+    {
+      "type": "url",
+      "id": "sub_link_6_b",
+      "label": "Subcategory B: Link"
+    },
+    {
+      "type": "text",
+      "id": "sub_title_6_c",
+      "label": "Subcategory C: Label",
+      "default": "Shisha"
+    },
+    {
+      "type": "url",
+      "id": "sub_link_6_c",
+      "label": "Subcategory C: Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop by Category Grid",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %}

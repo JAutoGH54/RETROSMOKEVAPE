@@ -1,0 +1,147 @@
+<div class="trust-strip-wrapper">
+  <div class="trust-strip-grid">
+    
+    <!-- Signal 1: Age verification -->
+    <div class="trust-strip-item">
+      <div class="trust-icon-box">
+        <svg class="trust-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="trust-text-box">
+        <h4 class="trust-item-title">Age-Verified (21+)</h4>
+        <p class="trust-item-desc">Secure checkout validation</p>
+      </div>
+    </div>
+
+    <!-- Signal 2: Secure Payment -->
+    <div class="trust-strip-item">
+      <div class="trust-icon-box">
+        <svg class="trust-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </div>
+      <div class="trust-text-box">
+        <h4 class="trust-item-title">Secure Payments</h4>
+        <p class="trust-item-desc">SSL Encrypted processing</p>
+      </div>
+    </div>
+
+    <!-- Signal 3: Carriers Shipping -->
+    <div class="trust-strip-item">
+      <div class="trust-icon-box">
+        <svg class="trust-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      </div>
+      <div class="trust-text-box">
+        <h4 class="trust-item-title">Real Carrier Shipping</h4>
+        <p class="trust-item-desc">Fast UPS / FedEx / USPS</p>
+      </div>
+    </div>
+
+    <!-- Signal 4: Established Shop -->
+    <div class="trust-strip-item">
+      <div class="trust-icon-box">
+        <svg class="trust-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <div class="trust-text-box">
+        <h4 class="trust-item-title">Established {{ section.settings.est_year | default: "2018" }}</h4>
+        <p class="trust-item-desc">Trusted local shop online</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% stylesheet %}
+  .trust-strip-wrapper {
+    background-color: var(--color-brand-charcoal-light);
+    border-top: 1px solid var(--color-brand-border);
+    border-bottom: 1px solid var(--color-brand-border);
+    padding: 1.75rem var(--page-margin);
+    width: 100%;
+  }
+
+  .trust-strip-grid {
+    max-width: var(--page-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 992px) {
+    .trust-strip-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  .trust-strip-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .trust-icon-box {
+    background-color: rgba(226, 108, 62, 0.08);
+    border: 1px solid rgba(226, 108, 62, 0.15);
+    color: var(--color-brand-coral);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .trust-icon {
+    stroke-width: 2;
+  }
+
+  .trust-text-box {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .trust-item-title {
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--color-brand-cream);
+  }
+
+  .trust-item-desc {
+    font-size: 0.75rem;
+    color: #9a9891;
+    margin-top: 0.15rem;
+  }
+
+  @media (max-width: 480px) {
+    .trust-strip-grid {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+    .trust-strip-item {
+      justify-content: flex-start;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Trust Strip",
+  "settings": [
+    {
+      "type": "text",
+      "id": "est_year",
+      "label": "Shop Established Year",
+      "default": "2018"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust Signal Strip",
+      "category": "Store Information"
+    }
+  ]
+}
+{% endschema %}

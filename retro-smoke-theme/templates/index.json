@@ -1,0 +1,53 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "heading": "Retro Style. Premium Gear.",
+        "subheading": "Retro vibe, quality hardware, and trusted local service delivered right to your door."
+      }
+    },
+    "trust-strip": {
+      "type": "trust-strip",
+      "settings": {
+        "est_year": "2018"
+      }
+    },
+    "shop-by-category": {
+      "type": "shop-by-category",
+      "settings": {
+        "subheading": "Explore our curated ranges of hardware, glass art, and vapor gear."
+      }
+    },
+    "featured-products": {
+      "type": "featured-products",
+      "settings": {
+        "heading": "New Arrivals",
+        "subheading": "Grab the latest authentic hardware and accessories in our lineup.",
+        "product_limit": 8
+      }
+    },
+    "shop-by-brand": {
+      "type": "shop-by-brand",
+      "settings": {
+        "heading": "Shop by Brand",
+        "subheading": "We carry authentic gear from the world's most trusted manufacturers."
+      }
+    },
+    "bargain-bin": {
+      "type": "bargain-bin",
+      "settings": {
+        "heading": "Bargain Bin Deals",
+        "subheading": "Grab top-tier hardware, glass, and accessory close-outs before they're gone forever."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trust-strip",
+    "shop-by-category",
+    "featured-products",
+    "shop-by-brand",
+    "bargain-bin"
+  ]
+}

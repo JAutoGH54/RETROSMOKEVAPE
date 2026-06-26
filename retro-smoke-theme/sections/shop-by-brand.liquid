@@ -1,0 +1,145 @@
+<div class="shop-brands-section section-spacing">
+  <div class="section-header reveal-on-scroll">
+    <h2>{{ section.settings.heading | default: "Carried Brands" }}</h2>
+    <p>{{ section.settings.subheading | default: "We carry authentic gear from the world's most trusted manufacturers." }}</p>
+  </div>
+
+  <div class="brands-grid-container">
+    {% assign brands = "Lookah, Yocan, Cheech & Chong, Grateful Dead, Dr. Dabber, Pulsar, G Pen, Hemper, High Five, PAX, Grav, Grunge Off, Focus V, Storz & Bickel, Gear Premium, Ooze, Xvape" | split: ", " %}
+    
+    {% for brand in brands %}
+      {% assign loop_index_mod = forloop.index0 | modulo: 6 %}
+      {% assign delay_class = "" %}
+      {% if loop_index_mod == 1 %}{% assign delay_class = "delay-100" %}
+      {% elsif loop_index_mod == 2 %}{% assign delay_class = "delay-200" %}
+      {% elsif loop_index_mod == 3 %}{% assign delay_class = "delay-300" %}
+      {% elsif loop_index_mod == 4 %}{% assign delay_class = "delay-400" %}
+      {% elsif loop_index_mod == 5 %}{% assign delay_class = "delay-500" %}{% endif %}
+
+      <a href="/collections/all?filter.p.vendor={{ brand | url_encode }}" class="brand-grid-card glass-panel reveal-on-scroll {{ delay_class }}">
+        <span class="brand-card-letter">{{ brand | slice: 0 }}</span>
+        <span class="brand-card-name">{{ brand }}</span>
+        <div class="brand-card-glow"></div>
+      </a>
+    {% endfor %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .brands-grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    max-width: var(--page-width);
+    margin: 0 auto;
+  }
+
+  @media (min-width: 576px) {
+    .brands-grid-container {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (min-width: 768px) {
+    .brands-grid-container {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media (min-width: 992px) {
+    .brands-grid-container {
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1rem;
+    }
+  }
+
+  .brand-grid-card {
+    padding: 1.5rem 1rem;
+    border-radius: 6px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .brand-card-letter {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-brand-coral);
+    opacity: 0.35;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .brand-card-name {
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-brand-cream);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+
+  .brand-card-glow {
+    position: absolute;
+    bottom: -20px;
+    width: 60px;
+    height: 20px;
+    background-color: var(--color-brand-coral);
+    filter: blur(15px);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Hover state */
+  .brand-grid-card:hover {
+    border-color: var(--color-brand-coral);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(226, 108, 62, 0.15);
+  }
+
+  .brand-grid-card:hover .brand-card-letter {
+    opacity: 0.75;
+    transform: translateY(-2px) scale(1.1);
+  }
+
+  .brand-grid-card:hover .brand-card-glow {
+    opacity: 0.15;
+    transform: scale(1.5);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Carried Brands Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop by Brand"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "We carry authentic gear from the world's most trusted manufacturers."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brands Logo Grid",
+      "category": "Brand"
+    }
+  ]
+}
+{% endschema %}

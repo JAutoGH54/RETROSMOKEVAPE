@@ -1,0 +1,128 @@
+<!-- Cart Drawer backdrop -->
+<div class="cart-drawer-backdrop" id="cart-drawer-backdrop"></div>
+
+<!-- Cart Drawer Dialog -->
+<div class="cart-drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-hidden="true">
+  
+  <div class="cart-drawer-header">
+    <h3 class="cart-drawer-title">Shopping Cart</h3>
+    <button class="cart-drawer-close-btn" id="cart-drawer-close" aria-label="Close Cart">
+      ✕
+    </button>
+  </div>
+
+  <!-- Dynamic content will be injected here by Javascript theme.js -->
+  <div class="cart-drawer-items" id="cart-drawer-items-container">
+    <div class="drawer-loading">
+      Updating Cart...
+    </div>
+  </div>
+
+</div>
+
+{% stylesheet %}
+  .cart-drawer-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s;
+  }
+
+  [data-drawer-open="true"] .cart-drawer-backdrop {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .cart-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    max-width: 440px;
+    height: 100vh;
+    background-color: var(--color-brand-charcoal);
+    border-left: 1px solid var(--color-brand-border);
+    z-index: 10000;
+    box-shadow: -10px 0 35px rgba(0, 0, 0, 0.6);
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cart-drawer[aria-hidden="false"] {
+    transform: translateX(0);
+  }
+
+  .cart-drawer-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--color-brand-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .cart-drawer-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-brand-cream);
+  }
+
+  .cart-drawer-close-btn {
+    background: none;
+    border: none;
+    color: var(--color-brand-cream);
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+  }
+
+  .cart-drawer-close-btn:hover {
+    color: var(--color-brand-coral);
+  }
+
+  .cart-drawer-items {
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Loading State Styles */
+  .drawer-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    font-family: var(--font-heading);
+    color: #9a9891;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .drawer-error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--color-brand-coral);
+  }
+{% endstylesheet %}

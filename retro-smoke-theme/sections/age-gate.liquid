@@ -1,0 +1,235 @@
+<div id="age-gate-overlay" class="age-gate-overlay" style="display: none;">
+  <div class="age-gate-container">
+    
+    <!-- Logo Slot -->
+    <div class="age-gate-logo-wrapper">
+      {% if section.settings.logo != blank %}
+        <img src="{{ section.settings.logo | image_url: width: 350 }}" 
+             alt="{{ shop.name }}" 
+             class="age-gate-logo" 
+             width="300" 
+             height="100">
+      {% else %}
+        <img src="{{ 'retro-smoke-logo.png' | asset_url }}" 
+             alt="{{ shop.name | default: 'Retro Smoke & Vape' }}" 
+             class="age-gate-logo" 
+             width="300" 
+             height="100">
+      {% endif %}
+    </div>
+
+    <!-- Active State Container -->
+    <div id="age-gate-actions" class="age-gate-content">
+      <h2 class="age-gate-title">{{ section.settings.title }}</h2>
+      <p class="age-gate-subtitle">{{ section.settings.subtitle }}</p>
+      
+      <div class="age-gate-buttons">
+        <button id="age-gate-enter" class="btn btn-green age-gate-btn">{{ section.settings.enter_text }}</button>
+        <button id="age-gate-leave" class="btn btn-secondary age-gate-btn-exit">{{ section.settings.exit_text }}</button>
+      </div>
+      
+      <p class="age-gate-disclaimer">
+        {{ section.settings.disclaimer }}
+      </p>
+    </div>
+
+    <!-- Denied State Container -->
+    <div id="age-gate-denied" class="age-gate-content age-gate-denied" style="display: none;">
+      <div class="age-gate-warning-icon">✕</div>
+      <h2 class="age-gate-title">{{ section.settings.denied_title }}</h2>
+      <p class="age-gate-subtitle">{{ section.settings.denied_message }}</p>
+      <p class="age-gate-disclaimer">
+        Government-issued photo ID is required to verify age upon delivery.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+{% stylesheet %}
+  .age-gate-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0b0b0c;
+    background-image: radial-gradient(circle at center, #1b1b1e 0%, #050506 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999999;
+    padding: var(--page-margin);
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+
+  .age-gate-container {
+    background-color: rgba(28, 28, 30, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(230, 209, 172, 0.08);
+    padding: 3.5rem 3rem;
+    border-radius: 12px;
+    max-width: 540px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .age-gate-logo-wrapper {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .age-gate-logo-text {
+    font-family: var(--font-heading);
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--color-brand-coral);
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    text-shadow: 0 4px 12px rgba(226, 108, 62, 0.15);
+  }
+
+  .age-gate-logo {
+    max-width: 280px;
+    height: auto;
+  }
+
+  .age-gate-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .age-gate-title {
+    font-size: 1.75rem;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    color: var(--color-brand-cream);
+  }
+
+  .age-gate-subtitle {
+    font-size: 1rem;
+    color: #a09d95;
+    margin-bottom: 0.5rem;
+  }
+
+  .age-gate-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .age-gate-btn {
+    width: 100%;
+    font-size: 1.05rem;
+    padding: 1rem;
+  }
+
+  .age-gate-btn-exit {
+    width: 100%;
+    font-size: 0.95rem;
+    padding: 0.85rem;
+    opacity: 0.7;
+    border-color: rgba(230, 209, 172, 0.2);
+  }
+
+  .age-gate-btn-exit:hover {
+    opacity: 1;
+    border-color: var(--color-brand-coral);
+  }
+
+  .age-gate-disclaimer {
+    font-size: 0.75rem;
+    color: #6d6b65;
+    line-height: 1.5;
+  }
+
+  /* Denied State styles */
+  .age-gate-denied {
+    color: var(--color-brand-cream);
+  }
+
+  .age-gate-warning-icon {
+    font-size: 3rem;
+    color: var(--color-brand-coral);
+    background-color: rgba(226, 108, 62, 0.1);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.5rem;
+    border: 1px solid rgba(226, 108, 62, 0.3);
+  }
+
+  @media (max-width: 480px) {
+    .age-gate-container {
+      padding: 2.5rem 1.5rem;
+    }
+    .age-gate-title {
+      font-size: 1.5rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Age Gate",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Custom Logo Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading Text",
+      "default": "Are you 21 or older?"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subheading Text",
+      "default": "This store contains adult vapor and smoke products. You must be 21+ to enter."
+    },
+    {
+      "type": "text",
+      "id": "enter_text",
+      "label": "Enter Button Label",
+      "default": "Yes, I am 21 or Older"
+    },
+    {
+      "type": "text",
+      "id": "exit_text",
+      "label": "Exit Button Label",
+      "default": "No, I am under 21"
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer",
+      "label": "Disclaimer Text",
+      "default": "By clicking enter, you agree that you are of legal smoking age in your jurisdiction. We enforce mandatory age verification at checkout and upon delivery."
+    },
+    {
+      "type": "text",
+      "id": "denied_title",
+      "label": "Access Denied Title",
+      "default": "Access Denied"
+    },
+    {
+      "type": "textarea",
+      "id": "denied_message",
+      "label": "Access Denied Message",
+      "default": "We're sorry, you must be 21 years of age or older to view this site. Access has been locked."
+    }
+  ]
+}
+{% endschema %}

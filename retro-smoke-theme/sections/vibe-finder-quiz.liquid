@@ -1,0 +1,1250 @@
+<!-- Sections: Vibe & Vape Recommendation Quiz -->
+
+<div class="vibe-quiz-overlay" id="vibe-quiz-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="vibe-quiz-backdrop" id="vibe-quiz-backdrop"></div>
+  
+  <!-- [CRT ARCADE CABINET CONTAINER] -->
+  <div class="vibe-quiz-cabinet glass-panel">
+    <div class="crt-screen">
+      <div class="crt-scanlines"></div>
+      <div class="crt-flicker"></div>
+      
+      <!-- Quiz Header/Status Bar -->
+      <div class="quiz-status-bar">
+        <span class="status-brand">RETRO SYSTEM v1.0</span>
+        <span class="status-step-indicator" id="quiz-progress-text">INSERT COIN</span>
+        <button type="button" class="quiz-exit-btn" id="quiz-close-trigger" aria-label="Exit Quiz">EXIT</button>
+      </div>
+
+      <!-- Quiz Content Area -->
+      <div class="quiz-content-wrapper">
+
+        <!-- [STEP 0: WELCOME SCREEN] -->
+        <div class="quiz-step active" id="step-welcome">
+          <div class="retro-banner-wrapper">
+            <h2 class="retro-glitch-title" data-text="VIBE FINDER">VIBE FINDER</h2>
+            <p class="retro-subheading">DISCOVER YOUR PERFECT SETUP IN 3 QUICK STEPS</p>
+          </div>
+          
+          <div class="welcome-visual">
+            <span class="welcome-emoji">🕹️</span>
+          </div>
+
+          <div class="welcome-action">
+            <button type="button" class="btn btn-primary retro-arcade-btn" id="quiz-start-btn">
+              START GAME
+            </button>
+          </div>
+        </div>
+
+        <!-- [STEP 1: PRODUCT CATEGORY] -->
+        <div class="quiz-step" id="step-category">
+          <h3 class="quiz-question">SELECT YOUR GEAR CATEGORY</h3>
+          <div class="quiz-choices-grid">
+            <button type="button" class="choice-card" data-choice-category="vapes">
+              <span class="choice-emoji">💨</span>
+              <span class="choice-title">Vapes & Pods</span>
+              <span class="choice-desc">Disposables, pods & starter kits</span>
+            </button>
+            <button type="button" class="choice-card" data-choice-category="glass">
+              <span class="choice-emoji">🔮</span>
+              <span class="choice-title">Glass Art</span>
+              <span class="choice-desc">Premium pipes, bongs & rigs</span>
+            </button>
+            <button type="button" class="choice-card" data-choice-category="gear">
+              <span class="choice-emoji">🔋</span>
+              <span class="choice-title">Devices & Mods</span>
+              <span class="choice-desc">Batteries, mod setups & vaporizers</span>
+            </button>
+            <button type="button" class="choice-card" data-choice-category="essentials">
+              <span class="choice-emoji">🧼</span>
+              <span class="choice-title">Essentials</span>
+              <span class="choice-desc">Cleaners, trays & accessories</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- [STEP 2: EXPERIENCE LEVEL / VIBE] -->
+        <div class="quiz-step" id="step-experience">
+          <h3 class="quiz-question">WHAT'S YOUR EXPERIENCE LEVEL?</h3>
+          <div class="quiz-choices-grid vertical-stack">
+            <button type="button" class="choice-card horizontal" data-choice-experience="beginner">
+              <span class="choice-emoji">🟢</span>
+              <div class="choice-text-block">
+                <span class="choice-title">Easy Going (Beginner)</span>
+                <span class="choice-desc">Simple, auto-draw, no-fuss setups</span>
+              </div>
+            </button>
+            <button type="button" class="choice-card horizontal" data-choice-experience="intermediate">
+              <span class="choice-emoji">🟠</span>
+              <div class="choice-text-block">
+                <span class="choice-title">Flavor Chaser (Intermediate)</span>
+                <span class="choice-desc">Refillable pod kits & adjustable variables</span>
+              </div>
+            </button>
+            <button type="button" class="choice-card horizontal" data-choice-experience="advanced">
+              <span class="choice-emoji">🔴</span>
+              <div class="choice-text-block">
+                <span class="choice-title">Pro Power (Advanced)</span>
+                <span class="choice-desc">Heavy hitters, dry herb mod setups & glass builds</span>
+              </div>
+            </button>
+          </div>
+          <div class="step-nav-buttons">
+            <button type="button" class="btn btn-secondary quiz-back-btn">BACK</button>
+          </div>
+        </div>
+
+        <!-- [STEP 3: FLAVOR PROFILE / FILTER] -->
+        <div class="quiz-step" id="step-flavor">
+          <h3 class="quiz-question">CHOOSE YOUR PREFERRED PROFILE</h3>
+          <div class="quiz-choices-grid">
+            <button type="button" class="choice-card" data-choice-flavor="fruity">
+              <span class="choice-emoji">🍍</span>
+              <span class="choice-title">Fruity & Sweet</span>
+              <span class="choice-desc">Tropical fruits, berries & candy</span>
+            </button>
+            <button type="button" class="choice-card" data-choice-flavor="mint">
+              <span class="choice-emoji">❄️</span>
+              <span class="choice-title">Cool Mint</span>
+              <span class="choice-desc">Ice, menthol & fresh finishes</span>
+            </button>
+            <button type="button" class="choice-card" data-choice-flavor="earthy">
+              <span class="choice-emoji">🪵</span>
+              <span class="choice-title">Earthy / Classic</span>
+              <span class="choice-desc">Traditional tobaccos & herbal vibes</span>
+            </button>
+            <button type="button" class="choice-card" data-choice-flavor="clean">
+              <span class="choice-emoji">✨</span>
+              <span class="choice-title">Pure & Clean</span>
+              <span class="choice-desc">Flavorless, high filtration & glass</span>
+            </button>
+          </div>
+          <div class="step-nav-buttons">
+            <button type="button" class="btn btn-secondary quiz-back-btn">BACK</button>
+          </div>
+        </div>
+
+        <!-- [STEP 4: LOADING / MATCHING ENGINE] -->
+        <div class="quiz-step" id="step-loading">
+          <div class="loading-engine-wrapper">
+            <div class="loading-console-text" id="console-log-text">INITIALIZING ENGINE...</div>
+            <div class="retro-progress-container">
+              <div class="retro-progress-fill" id="loading-progress-bar"></div>
+            </div>
+            <div class="loading-sub">ANALYZING INVENTORY AND COMPILING MATCHES...</div>
+          </div>
+        </div>
+
+        <!-- [STEP 5: RECOMMENDATIONS RESULTS] -->
+        <div class="quiz-step" id="step-results">
+          <h3 class="quiz-question success-title">🎮 PROFILES MATCHED! 🎮</h3>
+          <p class="results-subheading">Here are your best options based on your vibe profile:</p>
+
+          <div class="results-cards-container" id="quiz-results-container">
+            <!-- Dynamic Injection of matching product cards -->
+          </div>
+
+          <div class="results-footer-actions">
+            <button type="button" class="btn btn-secondary" id="quiz-restart-btn-end">PLAY AGAIN</button>
+            <button type="button" class="btn btn-primary" id="quiz-close-btn-end">CONTINUE SHOPPING</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Retro Bottom Panel decoration -->
+      <div class="crt-screen-footer">
+        <div class="status-led status-green"></div>
+        <div class="status-led-label">READY</div>
+        <div class="cabinet-vents">
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Embedded Catalog Data for Smart Matching (Liquify Product arrays) -->
+<script id="quiz-catalog-data" type="application/json">
+{
+  "vapes": [
+    {% assign col_vapes = collections[section.settings.collection_vapes] %}
+    {% if col_vapes != blank and col_vapes.products_count > 0 %}
+      {% for product in col_vapes.products limit: 16 %}
+        {
+          "title": {{ product.title | json }},
+          "url": {{ product.url | json }},
+          "image": {{ product.featured_image | image_url: width: 300, height: 300, crop: 'center' | json }},
+          "price": {{ product.price | money | json }},
+          "variantId": {{ product.selected_or_first_available_variant.id | json }},
+          "available": {{ product.available | json }},
+          "tags": {{ product.tags | json }}
+        }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    {% endif %}
+  ],
+  "glass": [
+    {% assign col_glass = collections[section.settings.collection_glass] %}
+    {% if col_glass != blank and col_glass.products_count > 0 %}
+      {% for product in col_glass.products limit: 16 %}
+        {
+          "title": {{ product.title | json }},
+          "url": {{ product.url | json }},
+          "image": {{ product.featured_image | image_url: width: 300, height: 300, crop: 'center' | json }},
+          "price": {{ product.price | money | json }},
+          "variantId": {{ product.selected_or_first_available_variant.id | json }},
+          "available": {{ product.available | json }},
+          "tags": {{ product.tags | json }}
+        }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    {% endif %}
+  ],
+  "gear": [
+    {% assign col_gear = collections[section.settings.collection_gear] %}
+    {% if col_gear != blank and col_gear.products_count > 0 %}
+      {% for product in col_gear.products limit: 16 %}
+        {
+          "title": {{ product.title | json }},
+          "url": {{ product.url | json }},
+          "image": {{ product.featured_image | image_url: width: 300, height: 300, crop: 'center' | json }},
+          "price": {{ product.price | money | json }},
+          "variantId": {{ product.selected_or_first_available_variant.id | json }},
+          "available": {{ product.available | json }},
+          "tags": {{ product.tags | json }}
+        }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    {% endif %}
+  ],
+  "essentials": [
+    {% assign col_essentials = collections[section.settings.collection_essentials] %}
+    {% if col_essentials != blank and col_essentials.products_count > 0 %}
+      {% for product in col_essentials.products limit: 16 %}
+        {
+          "title": {{ product.title | json }},
+          "url": {{ product.url | json }},
+          "image": {{ product.featured_image | image_url: width: 300, height: 300, crop: 'center' | json }},
+          "price": {{ product.price | money | json }},
+          "variantId": {{ product.selected_or_first_available_variant.id | json }},
+          "available": {{ product.available | json }},
+          "tags": {{ product.tags | json }}
+        }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    {% endif %}
+  ]
+}
+</script>
+
+<style>
+  /* ----------------------------------
+     Quiz Styling - CRT Neon Aesthetic
+     ---------------------------------- */
+  .vibe-quiz-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s;
+  }
+
+  .vibe-quiz-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .vibe-quiz-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 10, 11, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  /* Arcade Cabinet Wrapper */
+  .vibe-quiz-cabinet {
+    position: relative;
+    width: 92%;
+    max-width: 520px;
+    height: 85vh;
+    max-height: 720px;
+    background-color: #070708;
+    border: 3px solid var(--color-brand-cream);
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8),
+                0 0 30px rgba(230, 209, 172, 0.15),
+                inset 0 0 15px rgba(230, 209, 172, 0.1);
+    z-index: 10;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transform: scale(0.95);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .vibe-quiz-overlay.active .vibe-quiz-cabinet {
+    transform: scale(1);
+  }
+
+  /* CRT Screen Simulation */
+  .crt-screen {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #0c0d10;
+    padding: 1.25rem;
+    overflow: hidden;
+  }
+
+  /* Scanlines Overlay */
+  .crt-scanlines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%);
+    background-size: 100% 4px;
+    z-index: 100;
+    pointer-events: none;
+  }
+
+  /* Screen Flicker animation */
+  .crt-flicker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(18, 16, 16, 0.1);
+    opacity: 0;
+    z-index: 99;
+    pointer-events: none;
+    animation: crtFlickerAnim 0.15s infinite;
+  }
+
+  /* Status Bar */
+  .quiz-status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px dashed rgba(230, 209, 172, 0.2);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.25rem;
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: var(--color-brand-cream);
+    opacity: 0.8;
+  }
+
+  .status-brand {
+    font-weight: 800;
+    color: var(--color-brand-green);
+    letter-spacing: 0.05em;
+  }
+
+  .status-step-indicator {
+    color: var(--color-brand-coral);
+    font-weight: 800;
+  }
+
+  .quiz-exit-btn {
+    background: none;
+    border: 1px solid rgba(230, 209, 172, 0.3);
+    color: var(--color-brand-cream);
+    padding: 0.15rem 0.5rem;
+    font-family: monospace;
+    font-size: 0.7rem;
+    font-weight: 800;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s;
+  }
+
+  .quiz-exit-btn:hover {
+    border-color: var(--color-brand-coral);
+    color: var(--color-brand-coral);
+  }
+
+  /* Quiz Content Area */
+  .quiz-content-wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow-y: auto;
+    padding-bottom: 1rem;
+  }
+
+  /* Steps Base */
+  .quiz-step {
+    display: none;
+    flex-direction: column;
+    height: 100%;
+    animation: stepFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .quiz-step.active {
+    display: flex;
+  }
+
+  /* ----------------------------------
+     Step 0: Welcome Screen
+     ---------------------------------- */
+  #step-welcome {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .retro-banner-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .retro-glitch-title {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--color-brand-cream);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    text-shadow: 2px 2px 0 var(--color-brand-coral), 
+                 -2px -2px 0 var(--color-brand-green);
+    position: relative;
+  }
+
+  .retro-subheading {
+    font-size: 0.7rem;
+    font-family: var(--font-heading);
+    color: #8c8982;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+  }
+
+  .welcome-visual {
+    font-size: 4rem;
+    margin: 1rem 0;
+    animation: rotateEmoji 4s infinite ease-in-out;
+  }
+
+  .retro-arcade-btn {
+    padding: 1.1rem 2.5rem;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-radius: 12px;
+    box-shadow: 4px 4px 0 var(--color-brand-green);
+    transform: translateY(0);
+    transition: transform 0.1s, box-shadow 0.1s;
+  }
+
+  .retro-arcade-btn:active {
+    transform: translate(3px, 3px);
+    box-shadow: 1px 1px 0 var(--color-brand-green);
+  }
+
+  /* ----------------------------------
+     Quiz Grid Choices
+     ---------------------------------- */
+  .quiz-question {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-align: center;
+    color: var(--color-brand-cream);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+  }
+
+  .quiz-choices-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+    flex-grow: 1;
+  }
+
+  .quiz-choices-grid.vertical-stack {
+    grid-template-columns: 1fr;
+    align-content: center;
+    gap: 0.75rem;
+  }
+
+  /* Choice Card Base */
+  .choice-card {
+    background-color: rgba(28, 28, 30, 0.4);
+    border: 2px solid rgba(230, 209, 172, 0.1);
+    border-radius: 16px;
+    padding: 1.25rem 0.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    gap: 0.5rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .choice-card:hover {
+    border-color: rgba(230, 209, 172, 0.25);
+    background-color: rgba(28, 28, 30, 0.6);
+  }
+
+  .choice-card:active {
+    transform: scale(0.96);
+  }
+
+  .choice-card.horizontal {
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: left;
+    padding: 1rem 1.25rem;
+    gap: 1rem;
+  }
+
+  .choice-emoji {
+    font-size: 2rem;
+    transition: transform 0.2s;
+  }
+
+  .choice-card:hover .choice-emoji {
+    transform: scale(1.15);
+  }
+
+  .choice-text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .choice-title {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--color-brand-cream);
+    letter-spacing: 0.02em;
+  }
+
+  .choice-desc {
+    font-size: 0.65rem;
+    color: #8c8982;
+    line-height: 1.3;
+  }
+
+  .step-nav-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.25rem;
+    border-top: 1px dashed rgba(230, 209, 172, 0.1);
+    padding-top: 1rem;
+  }
+
+  .quiz-back-btn {
+    padding: 0.65rem 1.5rem;
+    font-size: 0.75rem;
+    border-radius: 8px;
+  }
+
+  /* ----------------------------------
+     Loading / Matching Spinner
+     ---------------------------------- */
+  #step-loading {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .loading-engine-wrapper {
+    width: 80%;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .loading-console-text {
+    font-family: monospace;
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--color-brand-green);
+    letter-spacing: 0.05em;
+    min-height: 1.2rem;
+  }
+
+  .retro-progress-container {
+    width: 100%;
+    height: 16px;
+    border: 2px solid var(--color-brand-cream);
+    border-radius: 4px;
+    background-color: #000;
+    overflow: hidden;
+    padding: 2px;
+  }
+
+  .retro-progress-fill {
+    width: 0%;
+    height: 100%;
+    background-color: var(--color-brand-green);
+    box-shadow: 0 0 10px rgba(36, 168, 104, 0.6);
+    transition: width 0.1s ease-out;
+  }
+
+  .loading-sub {
+    font-family: monospace;
+    font-size: 0.6rem;
+    color: #6d6b65;
+  }
+
+  /* ----------------------------------
+     Step 5: Recommendations Results
+     ---------------------------------- */
+  #step-results {
+    gap: 1rem;
+  }
+
+  .success-title {
+    color: var(--color-brand-green);
+    text-shadow: 0 0 8px rgba(36, 168, 104, 0.4);
+    margin-bottom: 0.25rem;
+  }
+
+  .results-subheading {
+    font-size: 0.75rem;
+    text-align: center;
+    color: #8c8982;
+    margin-bottom: 1rem;
+  }
+
+  .results-cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-right: 2px;
+  }
+
+  /* Result Card Layout */
+  .result-product-card {
+    display: flex;
+    align-items: center;
+    padding: 0.85rem;
+    border: 1px solid rgba(230, 209, 172, 0.1);
+    border-radius: 16px;
+    background-color: rgba(28, 28, 30, 0.3);
+    gap: 0.85rem;
+    transition: border-color 0.2s;
+  }
+
+  .result-product-card:hover {
+    border-color: var(--color-brand-green);
+  }
+
+  .result-card-img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    background-color: #050506;
+    border-radius: 8px;
+    padding: 4px;
+    flex-shrink: 0;
+  }
+
+  .result-card-details {
+    flex-grow: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .result-card-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-brand-cream);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .result-card-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .result-card-title a:hover {
+    color: var(--color-brand-coral);
+  }
+
+  .result-card-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .result-card-price {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-brand-coral);
+  }
+
+  .result-card-badge {
+    background-color: rgba(36, 168, 104, 0.1);
+    color: var(--color-brand-green);
+    border: 1px solid var(--color-brand-green);
+    font-size: 0.55rem;
+    padding: 0.05rem 0.25rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: 800;
+  }
+
+  .result-card-action {
+    flex-shrink: 0;
+  }
+
+  .quiz-atc-btn {
+    padding: 0.55rem 0.75rem;
+    font-size: 0.7rem;
+    border-radius: 8px;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    min-height: auto;
+  }
+
+  .results-footer-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    border-top: 1px dashed rgba(230, 209, 172, 0.15);
+    padding-top: 1rem;
+    flex-shrink: 0;
+  }
+
+  .results-footer-actions .btn {
+    padding: 0.75rem;
+    font-size: 0.75rem;
+    border-radius: 10px;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  /* Cabinet Footer (led/vents) */
+  .crt-screen-footer {
+    display: flex;
+    align-items: center;
+    border-top: 2px dashed rgba(230, 209, 172, 0.15);
+    padding-top: 0.75rem;
+    margin-top: 1rem;
+    flex-shrink: 0;
+  }
+
+  .status-led {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin-right: 0.35rem;
+  }
+
+  .status-green {
+    background-color: var(--color-brand-green);
+    box-shadow: 0 0 8px var(--color-brand-green);
+  }
+
+  .status-led-label {
+    font-family: monospace;
+    font-size: 0.6rem;
+    color: #6d6b65;
+    flex-shrink: 0;
+  }
+
+  .cabinet-vents {
+    display: flex;
+    gap: 4px;
+    margin-left: auto;
+  }
+
+  .cabinet-vents span {
+    width: 15px;
+    height: 3px;
+    background-color: rgba(230, 209, 172, 0.1);
+    border-radius: 1px;
+  }
+
+  /* Fallback Mock Card styling */
+  .fallback-icon {
+    font-size: 1.5rem;
+    display: inline-block;
+    padding: 0.5rem;
+  }
+
+  /* Keyframe Animations */
+  @keyframes crtFlickerAnim {
+    0% { opacity: 0.08; }
+    50% { opacity: 0.12; }
+    100% { opacity: 0.08; }
+  }
+
+  @keyframes stepFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes rotateEmoji {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(10deg) scale(1.08); }
+  }
+</style>
+
+<!-- Quiz Recommendation Logic Script -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    
+    // Quiz selectors
+    const quizOverlay = document.getElementById('vibe-quiz-overlay');
+    const quizBackdrop = document.getElementById('vibe-quiz-backdrop');
+    const quizStartBtn = document.getElementById('quiz-start-btn');
+    const quizCloseTrigger = document.getElementById('quiz-close-trigger');
+    const quizRestartBtn = document.getElementById('quiz-restart-btn-end');
+    const quizCloseBtnEnd = document.getElementById('quiz-close-btn-end');
+    
+    // Triggers from outer files
+    const outerQuizTriggers = document.querySelectorAll('.special-quiz-trigger');
+
+    // Steps elements
+    const stepWelcome = document.getElementById('step-welcome');
+    const stepCategory = document.getElementById('step-category');
+    const stepExperience = document.getElementById('step-experience');
+    const stepFlavor = document.getElementById('step-flavor');
+    const stepLoading = document.getElementById('step-loading');
+    const stepResults = document.getElementById('step-results');
+    const progressText = document.getElementById('quiz-progress-text');
+    const loadingProgressBar = document.getElementById('loading-progress-bar');
+    const consoleLogText = document.getElementById('console-log-text');
+    const resultsContainer = document.getElementById('quiz-results-container');
+
+    const steps = [
+      { id: 'step-welcome', label: 'INSERT COIN' },
+      { id: 'step-category', label: 'STAGE 01/03' },
+      { id: 'step-experience', label: 'STAGE 02/03' },
+      { id: 'step-flavor', label: 'STAGE 03/03' },
+      { id: 'step-loading', label: 'COMPILING' },
+      { id: 'step-results', label: 'GAME OVER' }
+    ];
+
+    let quizAnswers = {
+      category: '',
+      experience: '',
+      flavor: ''
+    };
+
+    // Load Catalog Data
+    let catalogData = {};
+    try {
+      const dataScript = document.getElementById('quiz-catalog-data');
+      if (dataScript) {
+        catalogData = JSON.parse(dataScript.textContent);
+      }
+    } catch (e) {
+      console.error('Quiz unable to parse catalog json data:', e);
+    }
+
+    // Fallback Mock products if catalog is empty
+    const mockProducts = {
+      "vapes": [
+        { title: "Retro Disposable Vape (Breeze)", price: "$19.99", variantId: "", tags: ["beginner", "fruity"], image: "", available: true },
+        { title: "Neo Pod Mod Device Kit", price: "$29.99", variantId: "", tags: ["intermediate", "mint"], image: "", available: true },
+        { title: "Hyper Vapour Custom Mod System", price: "$64.99", variantId: "", tags: ["advanced", "earthy"], image: "", available: true }
+      ],
+      "glass": [
+        { title: "Cheech Classic Beaker Pipe", price: "$89.99", variantId: "", tags: ["intermediate", "clean"], image: "", available: true },
+        { title: "Grav Pocket Bubbler", price: "$49.99", variantId: "", tags: ["beginner", "clean"], image: "", available: true },
+        { title: "Pulsar Recycler Glass Build", price: "$149.99", variantId: "", tags: ["advanced", "clean"], image: "", available: true }
+      ],
+      "gear": [
+        { title: "Ooze Twist Slim Battery 510", price: "$14.99", variantId: "", tags: ["beginner", "clean"], image: "", available: true },
+        { title: "Yocan Evolve Plus Wax Mod", price: "$34.99", variantId: "", tags: ["intermediate", "earthy"], image: "", available: true },
+        { title: "Pax Plus Dual-Use Device", price: "$249.99", variantId: "", tags: ["advanced", "clean"], image: "", available: true }
+      ],
+      "essentials": [
+        { title: "Grunge Off Super Glass Cleaner", price: "$16.99", variantId: "", tags: ["beginner", "clean"], image: "", available: true },
+        { title: "RAW Classic Rolling Tray", price: "$9.99", variantId: "", tags: ["beginner", "earthy"], image: "", available: true }
+      ]
+    };
+
+    // Open/Close functions
+    function openQuiz() {
+      quizOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      showStep('step-welcome');
+    }
+
+    function closeQuiz() {
+      quizOverlay.classList.remove('active');
+      document.body.removeAttribute('style');
+    }
+
+    if (outerQuizTriggers.length > 0) {
+      outerQuizTriggers.forEach(btn => {
+        btn.addEventListener('click', openQuiz);
+      });
+    }
+
+    if (quizCloseTrigger) quizCloseTrigger.addEventListener('click', closeQuiz);
+    if (quizBackdrop) quizBackdrop.addEventListener('click', closeQuiz);
+    if (quizCloseBtnEnd) quizCloseBtnEnd.addEventListener('click', closeQuiz);
+    
+    if (quizRestartBtn) {
+      quizRestartBtn.addEventListener('click', function() {
+        quizAnswers = { category: '', experience: '', flavor: '' };
+        showStep('step-welcome');
+      });
+    }
+
+    if (quizStartBtn) {
+      quizStartBtn.addEventListener('click', function() {
+        showStep('step-category');
+      });
+    }
+
+    // Step Transition Handler
+    function showStep(stepId) {
+      const allStepEl = document.querySelectorAll('.quiz-step');
+      allStepEl.forEach(el => el.classList.remove('active'));
+      
+      const targetStep = document.getElementById(stepId);
+      if (targetStep) targetStep.classList.add('active');
+
+      const info = steps.find(s => s.id === stepId);
+      if (progressText && info) {
+        progressText.textContent = info.label;
+      }
+    }
+
+    // Step 1: Category selections
+    const categoryButtons = document.querySelectorAll('[data-choice-category]');
+    categoryButtons.forEach(btn => {
+      btn.addEventListener('click', function() {
+        quizAnswers.category = this.getAttribute('data-choice-category');
+        showStep('step-experience');
+      });
+    });
+
+    // Step 2: Experience level selections
+    const experienceButtons = document.querySelectorAll('[data-choice-experience]');
+    experienceButtons.forEach(btn => {
+      btn.addEventListener('click', function() {
+        quizAnswers.experience = this.getAttribute('data-choice-experience');
+        showStep('step-flavor');
+      });
+    });
+
+    // Step 3: Flavor profile selections
+    const flavorButtons = document.querySelectorAll('[data-choice-flavor]');
+    flavorButtons.forEach(btn => {
+      btn.addEventListener('click', function() {
+        quizAnswers.flavor = this.getAttribute('data-choice-flavor');
+        runMatchingEngine();
+      });
+    });
+
+    // Back Buttons
+    const backButtons = document.querySelectorAll('.quiz-back-btn');
+    backButtons.forEach(btn => {
+      btn.addEventListener('click', function() {
+        const activeStep = document.querySelector('.quiz-step.active');
+        if (activeStep.id === 'step-experience') {
+          showStep('step-category');
+        } else if (activeStep.id === 'step-flavor') {
+          showStep('step-experience');
+        }
+      });
+    });
+
+    // ----------------------------------
+    // SMART RECOMMENDATION MATCHING ENGINE
+    // ----------------------------------
+    function runMatchingEngine() {
+      showStep('step-loading');
+      
+      let progress = 0;
+      let logs = [
+        'BOOTING ENGINE...',
+        'PARSING USER PROFILE...',
+        'FETCHING INVENTORY...',
+        'SCORING PRODUCTS...',
+        'COMPILING RESULTS...'
+      ];
+      
+      if (loadingProgressBar) loadingProgressBar.style.width = '0%';
+
+      const interval = setInterval(() => {
+        progress += 8;
+        if (progress > 100) progress = 100;
+        
+        if (loadingProgressBar) loadingProgressBar.style.width = progress + '%';
+        
+        // Dynamic logs simulation
+        const logIndex = Math.min(Math.floor((progress / 100) * logs.length), logs.length - 1);
+        if (consoleLogText) consoleLogText.textContent = logs[logIndex];
+
+        if (progress >= 100) {
+          clearInterval(interval);
+          setTimeout(() => {
+            compileQuizResults();
+          }, 300);
+        }
+      }, 100);
+    }
+
+    function compileQuizResults() {
+      resultsContainer.innerHTML = '';
+      
+      // Get category products list
+      let productsList = catalogData[quizAnswers.category] || [];
+      
+      // If Shopify database returned empty for selected collection, merge mock products
+      if (productsList.length === 0) {
+        productsList = mockProducts[quizAnswers.category] || [];
+      }
+
+      // Score matching logic
+      let scoredProducts = productsList.map(prod => {
+        let score = 0;
+        const tags = prod.tags ? prod.tags.map(t => t.toLowerCase()) : [];
+
+        // Experience tag matching
+        if (quizAnswers.experience === 'beginner') {
+          if (tags.includes('beginner') || tags.includes('disposable') || tags.includes('easy')) score += 3;
+        } else if (quizAnswers.experience === 'intermediate') {
+          if (tags.includes('intermediate') || tags.includes('pod') || tags.includes('battery')) score += 3;
+        } else if (quizAnswers.experience === 'advanced') {
+          if (tags.includes('advanced') || tags.includes('mod') || tags.includes('glass') || tags.includes('dry-herb')) score += 3;
+        }
+
+        // Flavor tag matching
+        if (quizAnswers.flavor === 'fruity') {
+          if (tags.includes('fruity') || tags.includes('sweet') || tags.includes('fruit') || tags.includes('mango') || tags.includes('berry')) score += 4;
+        } else if (quizAnswers.flavor === 'mint') {
+          if (tags.includes('mint') || tags.includes('cool') || tags.includes('ice') || tags.includes('menthol')) score += 4;
+        } else if (quizAnswers.flavor === 'earthy') {
+          if (tags.includes('earthy') || tags.includes('classic') || tags.includes('tobacco') || tags.includes('wood') || tags.includes('herbal')) score += 4;
+        } else if (quizAnswers.flavor === 'clean') {
+          if (tags.includes('clean') || tags.includes('pure') || tags.includes('glass') || tags.includes('cleaner') || tags.includes('clear')) score += 4;
+        }
+
+        return { product: prod, score: score };
+      });
+
+      // Sort by score descending
+      scoredProducts.sort((a, b) => b.score - a.score);
+
+      // Take top 3 recommendations
+      const recommendations = scoredProducts.slice(0, 3);
+
+      recommendations.forEach(item => {
+        const prod = item.product;
+        const scorePct = item.score > 0 ? 'MATCH MATCH' : 'FEATURED';
+        
+        let cardHtml = '';
+        
+        // Build image template or fallback emoji container if image empty (mocking)
+        let imgTagHtml = '';
+        if (prod.image) {
+          imgTagHtml = `<img src="${prod.image}" alt="${prod.title}" class="result-card-img" width="55" height="55" loading="lazy">`;
+        } else {
+          // Mocking fallback
+          let emoji = '📦';
+          if (quizAnswers.category === 'vapes') emoji = '💨';
+          else if (quizAnswers.category === 'glass') emoji = '🔮';
+          else if (quizAnswers.category === 'gear') emoji = '🔋';
+          else if (quizAnswers.category === 'essentials') emoji = '🧼';
+
+          imgTagHtml = `<div class="result-card-img" style="background: rgba(28,28,30,0.6); display:flex; align-items:center; justify-content:center;"><span class="fallback-icon">${emoji}</span></div>`;
+        }
+
+        // Add to Cart Button Logic
+        let actionBtnHtml = '';
+        if (prod.variantId && prod.available) {
+          actionBtnHtml = `<button type="button" class="btn btn-primary quiz-atc-btn" data-add-variant-id="${prod.variantId}">ADD</button>`;
+        } else if (prod.variantId && !prod.available) {
+          actionBtnHtml = `<button type="button" class="btn btn-secondary quiz-atc-btn" disabled>OUT</button>`;
+        } else {
+          // Fallback if variant id is missing (mock products or liquid missing variants)
+          actionBtnHtml = `<a href="${prod.url || '#'}" class="btn btn-primary quiz-atc-btn">VIEW</a>`;
+        }
+
+        cardHtml = `
+          <div class="result-product-card">
+            ${imgTagHtml}
+            <div class="result-card-details">
+              <span class="result-card-title"><a href="${prod.url || '#'}">${prod.title}</a></span>
+              <div class="result-card-row">
+                <span class="result-card-price">${prod.price}</span>
+                <span class="result-card-badge">${scorePct}</span>
+              </div>
+            </div>
+            <div class="result-card-action">
+              ${actionBtnHtml}
+            </div>
+          </div>
+        `;
+        
+        resultsContainer.insertAdjacentHTML('beforeend', cardHtml);
+      });
+
+      // Bind AJAX Cart listeners to matching buttons
+      const quizAtcButtons = resultsContainer.querySelectorAll('[data-add-variant-id]');
+      quizAtcButtons.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const variantId = this.getAttribute('data-add-variant-id');
+          addQuizProductToCart(variantId, this);
+        });
+      });
+
+      showStep('step-results');
+    }
+
+    // Ajax add product from quiz results screen
+    function addQuizProductToCart(variantId, btnElement) {
+      btnElement.disabled = true;
+      btnElement.textContent = 'ADDING...';
+
+      const formData = {
+        'items': [{
+          'id': parseInt(variantId),
+          'quantity': 1
+        }]
+      };
+
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+      .then(response => {
+        if (!response.ok) throw new Error('Add to cart failed');
+        return response.json();
+      })
+      .then(data => {
+        btnElement.textContent = 'ADDED!';
+        btnElement.style.backgroundColor = 'var(--color-brand-green)';
+        btnElement.style.borderColor = 'var(--color-brand-green)';
+        btnElement.style.color = 'var(--color-brand-charcoal)';
+
+        // Sync main theme cart bubbles
+        if (typeof updateCartCountBubbles === 'function') {
+          updateCartCountBubbles();
+        } else {
+          // fallback count
+          fetch('/cart.js')
+            .then(res => res.json())
+            .then(cart => {
+              const bubbles = document.querySelectorAll('.cart-count-bubble');
+              bubbles.forEach(bubble => {
+                bubble.textContent = cart.item_count;
+                bubble.style.display = cart.item_count > 0 ? 'flex' : 'none';
+              });
+            });
+        }
+
+        // Delay popup slideout cart drawer to let the user see "added" state
+        setTimeout(() => {
+          closeQuiz();
+          
+          const drawer = document.getElementById('cart-drawer');
+          if (drawer) {
+            drawer.setAttribute('aria-hidden', 'false');
+            document.documentElement.setAttribute('data-drawer-open', 'true');
+            if (typeof fetchCartDrawerHTML === 'function') {
+              fetchCartDrawerHTML();
+            }
+          }
+        }, 800);
+      })
+      .catch(error => {
+        console.error('Quiz Cart Error:', error);
+        btnElement.textContent = 'ERROR';
+        setTimeout(() => {
+          btnElement.textContent = 'ADD';
+          btnElement.disabled = false;
+        }, 1500);
+      });
+    }
+
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Vibe Quiz Modal",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Quiz Catalog Collections"
+    },
+    {
+      "type": "collection",
+      "id": "collection_vapes",
+      "label": "Vapes Collection"
+    },
+    {
+      "type": "collection",
+      "id": "collection_glass",
+      "label": "Glass Collection"
+    },
+    {
+      "type": "collection",
+      "id": "collection_gear",
+      "label": "Devices/Mods Collection"
+    },
+    {
+      "type": "collection",
+      "id": "collection_essentials",
+      "label": "Essentials Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Interactive Vibe Quiz",
+      "category": "Interactive"
+    }
+  ]
+}
+{% endschema %}
