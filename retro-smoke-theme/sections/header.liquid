@@ -18,7 +18,7 @@
                width="180"
                height="45">
         {% else %}
-          <img src="{{ 'retro-smoke-logo.png' | asset_url }}" 
+          <img src="{{ 'retro-smoke-logo.png' | asset_img_url: '600x', format: 'webp' }}" 
                alt="{{ shop.name | default: 'Retro Smoke & Vape' }}" 
                class="header__logo-img"
                width="180"
@@ -105,7 +105,7 @@
              width="180"
              height="45">
       {% else %}
-        <img src="{{ 'retro-smoke-logo.png' | asset_url }}" 
+        <img src="{{ 'retro-smoke-logo.png' | asset_img_url: '600x', format: 'webp' }}" 
              alt="{{ shop.name | default: 'Retro Smoke & Vape' }}" 
              class="header__logo-img"
              width="180"
