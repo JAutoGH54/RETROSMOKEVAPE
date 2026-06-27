@@ -44,6 +44,7 @@ function initAgeGate() {
       setTimeout(() => {
         ageGate.style.display = 'none';
         document.documentElement.classList.add('age-verified');
+        document.dispatchEvent(new CustomEvent('age-verified'));
       }, 500);
     });
   }
@@ -333,9 +334,6 @@ function initScrollAnimations() {
   elements.forEach(el => observer.observe(el));
 }
 
-/* ==========================================
-   7. Card Spotlight & 3D Tilt Integration
-   ========================================== */
 function initCardInteractions() {
   const supportsHover = window.matchMedia('(hover: hover)').matches;
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -345,60 +343,72 @@ function initCardInteractions() {
   if (!supportsHover || isTouch || prefersReducedMotion) return;
 
   const cardSelector = '.product-card, .category-card, .bargain-card';
+  const cards = document.querySelectorAll(cardSelector);
 
-  document.body.addEventListener('mousemove', function(e) {
-    const card = e.target.closest(cardSelector);
-    if (!card) return;
+  cards.forEach(card => {
+    let rect = null;
+    let rafId = null;
 
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    card.addEventListener('mouseenter', function() {
+      rect = card.getBoundingClientRect();
+    });
 
-    // Set cursor spotlights
-    card.style.setProperty('--mouse-x', `${x}px`);
-    card.style.setProperty('--mouse-y', `${y}px`);
-
-    // 3D Parallax Tilt (disabled on touch & reduced motion)
-    if (supportsHover && !prefersReducedMotion && !isTouch) {
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      
-      const rotateX = ((y - centerY) / centerY) * -8;
-      const rotateY = ((x - centerX) / centerX) * 8;
-
-      card.style.transform = `perspective(1000px) translateY(-5px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-      
-      const img = card.querySelector('.product-card-img, .category-card-img, .bargain-card-img');
-      if (img) {
-        const moveX = ((x - centerX) / centerX) * -5;
-        const moveY = ((y - centerY) / centerY) * -5;
-        img.style.transform = `translate3d(${moveX}px, ${moveY}px, 0) scale(1.06)`;
+    card.addEventListener('mousemove', function(e) {
+      if (!rect) {
+        rect = card.getBoundingClientRect();
       }
-    }
-  });
 
-  document.body.addEventListener('mouseout', function(e) {
-    const card = e.target.closest(cardSelector);
-    if (!card) return;
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
 
-    const related = e.relatedTarget;
-    if (related && card.contains(related)) return;
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+      }
 
-    // Reset styles
-    card.style.transform = '';
-    card.style.removeProperty('--mouse-x');
-    card.style.removeProperty('--mouse-y');
+      rafId = requestAnimationFrame(function() {
+        // Set cursor spotlights
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
 
-    const img = card.querySelector('.product-card-img, .category-card-img, .bargain-card-img');
-    if (img) {
-      img.style.transform = '';
-    }
+        // 3D Parallax Tilt
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = ((y - centerY) / centerY) * -8;
+        const rotateY = ((x - centerX) / centerX) * 8;
+
+        card.style.transform = `perspective(1000px) translateY(-5px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        
+        const img = card.querySelector('.product-card-img, .category-card-img, .bargain-card-img');
+        if (img) {
+          const moveX = ((x - centerX) / centerX) * -5;
+          const moveY = ((y - centerY) / centerY) * -5;
+          img.style.transform = `translate3d(${moveX}px, ${moveY}px, 0) scale(1.06)`;
+        }
+      });
+    });
+
+    card.addEventListener('mouseleave', function() {
+      rect = null;
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+      }
+
+      rafId = requestAnimationFrame(function() {
+        // Reset styles
+        card.style.transform = '';
+        card.style.removeProperty('--mouse-x');
+        card.style.removeProperty('--mouse-y');
+
+        const img = card.querySelector('.product-card-img, .category-card-img, .bargain-card-img');
+        if (img) {
+          img.style.transform = '';
+        }
+      });
+    });
   });
 }
 
-/* ==========================================
-   8. Ambient Vapor Drift Canvas Engine
-   ========================================== */
 function initVaporDrift() {
   const canvas = document.getElementById('hero-vapor-canvas');
   if (!canvas) return;
@@ -412,10 +422,16 @@ function initVaporDrift() {
   const wrapper = canvas.parentElement;
   const ctx = canvas.getContext('2d');
   
-  let animationFrameId;
+  let animationFrameId = null;
   let particles = [];
   let width, height;
-  let isVisible = false;
+
+  let isVerified = document.documentElement.classList.contains('age-verified');
+  let isIntersecting = false;
+  let isTabActive = !document.hidden;
+
+  let fpsInterval = 1000 / 30; // Max 30 FPS to reduce GPU load
+  let lastFrameTime = 0;
   
   let mouse = { x: -1000, y: -1000, active: false };
   
@@ -509,31 +525,63 @@ function initVaporDrift() {
     particles.push(new Particle());
   }
 
-  function loop() {
-    if (!isVisible) return;
-    
+  function checkAndToggleLoop() {
+    const shouldRun = isIntersecting && isVerified && isTabActive;
+    if (shouldRun) {
+      if (!animationFrameId) {
+        lastFrameTime = performance.now();
+        animationFrameId = requestAnimationFrame(loop);
+      }
+    } else {
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+      }
+    }
+  }
+
+  function loop(timestamp) {
+    const shouldRun = isIntersecting && isVerified && isTabActive;
+    if (!shouldRun) {
+      animationFrameId = null;
+      return;
+    }
+
+    animationFrameId = requestAnimationFrame(loop);
+
+    if (!timestamp) timestamp = performance.now();
+    const elapsed = timestamp - lastFrameTime;
+
+    if (elapsed < fpsInterval) return;
+
+    lastFrameTime = timestamp - (elapsed % fpsInterval);
+
     ctx.clearRect(0, 0, width, height);
 
     for (let i = 0; i < particles.length; i++) {
       particles[i].update();
       particles[i].draw();
     }
-
-    animationFrameId = requestAnimationFrame(loop);
   }
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      isVisible = entry.isIntersecting;
-      if (isVisible) {
-        loop();
-      } else {
-        cancelAnimationFrame(animationFrameId);
-      }
+      isIntersecting = entry.isIntersecting;
+      checkAndToggleLoop();
     });
   }, { threshold: 0 });
 
   observer.observe(wrapper);
+
+  document.addEventListener('visibilitychange', () => {
+    isTabActive = !document.hidden;
+    checkAndToggleLoop();
+  });
+
+  document.addEventListener('age-verified', () => {
+    isVerified = true;
+    checkAndToggleLoop();
+  });
 }
 
 /* ==========================================
